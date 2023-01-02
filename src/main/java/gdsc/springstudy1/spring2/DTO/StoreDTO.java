@@ -1,4 +1,4 @@
-package gdsc.spring2.DTO;
+package gdsc.springstudy1.spring2.DTO;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public class StoreDTO {
-    private Long id;
+
     private String name;
     private String address;
     private Double latitude;
@@ -16,8 +16,7 @@ public class StoreDTO {
     private String sector;
 
     @Builder
-    public StoreDTO(Long id, String name, String address, Double latitude, Double longitude, String sector) {
-        this.id = id;
+    public StoreDTO(String name, String address, Double latitude, Double longitude, String sector) {
         this.name = name;
         this.address = address;
         this.latitude = latitude;

@@ -1,16 +1,14 @@
-package gdsc.spring2.controller;
+package gdsc.springstudy1.spring2.controller;
 
-import gdsc.spring2.DTO.StoreDTO;
-import gdsc.spring2.entity.Store;
-import gdsc.spring2.repository.StoreRepository;
+import gdsc.springstudy1.spring2.DTO.StoreDTO;
+import gdsc.springstudy1.spring2.entity.Store;
+import gdsc.springstudy1.spring2.repository.StoreRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.BufferedReader;
@@ -26,7 +24,7 @@ import java.text.ParseException;
 public class CardApiController {
     private final StoreRepository storeRepository;
 
-    @GetMapping("cardApi")
+    @GetMapping("/cardApi")
     public Long cardApiParsing() throws ParseException {
 
         // https://api.odcloud.kr/api/15088598/v1/uddi:f9e392fd-09bb-4812-b065-d6529bd4ce60
