@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface StoreRepository extends JpaRepository<Store,Long> {
     List<OnlyLatLng> findAllBy();
+
 }

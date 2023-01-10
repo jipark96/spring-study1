@@ -1,12 +1,14 @@
 package gdsc.springstudy1.spring2.entity;
 
 import gdsc.springstudy1.spring2.DTO.StoreDTO;
+import gdsc.springstudy1.spring2.DTO.UpdateStoreNameDTO;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.Map;
 
 @Entity // DB에서는 행
 @Getter
@@ -42,5 +44,9 @@ public class Store {
         this.latitude = storeDTO.getLatitude();
         this.longitude = storeDTO.getLongitude();
         this.sector = storeDTO.getSector();
+    }
+
+    public void update(UpdateStoreNameDTO updateStoreNameDTO) {
+        this.name = updateStoreNameDTO.getName();
     }
 }

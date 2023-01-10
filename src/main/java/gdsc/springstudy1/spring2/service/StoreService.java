@@ -1,6 +1,7 @@
 package gdsc.springstudy1.spring2.service;
 
 import gdsc.springstudy1.spring2.DTO.StoreDTO;
+import gdsc.springstudy1.spring2.DTO.UpdateStoreNameDTO;
 import gdsc.springstudy1.spring2.entity.Store;
 import gdsc.springstudy1.spring2.mapping.OnlyLatLng;
 import gdsc.springstudy1.spring2.repository.StoreRepository;
@@ -21,7 +22,7 @@ import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
-public class CardService {
+public class StoreService {
 
     private final StoreRepository storeRepository;
 
@@ -71,7 +72,33 @@ public class CardService {
         return storeRepository.findAll();
     }
 
-    // Open API StringBulder에 넣는 메서드
+    @Transactional
+    public Long updateStore(Long id, UpdateStoreNameDTO updateStoreNameDTO) {
+//        Store oldStore;
+//        Optional<Store> optional = storeRepository.findById(id);
+//        if (optional.isPresent()) {
+//            oldStore = optional.get();
+//        } else throw new IllegalArgumentException("해당하는 가게가 존재하지 않습니다. id = " + id);
+
+        Store oldStore = storeRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당하는 가게가 존재하지 않습니다. id = " + id));
+
+//        oldStore = Store.builder()
+//                .storeDTO(StoreDTO.builder()
+//                        .name(updateStoreNameDTO.getName())
+//                        .address(oldStore.getAddress())
+//                        .latitude(oldStore.getLatitude())
+//                        .longitude(oldStore.getLongitude())
+//                        .sector(oldStore.getSector()).build())
+//                .build();
+
+        oldStore.update(updateStoreNameDTO);
+
+        return 1L;
+    }
+
+
+    // Open API StringBuilder 에 넣는 메서드
     private StringBuilder castStringBuilder(String serviceKey) {
         StringBuilder sb = new StringBuilder();
         JSONObject result = null;
@@ -152,4 +179,6 @@ public class CardService {
             e.printStackTrace();
         }
     }
+
+
 }

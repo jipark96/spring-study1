@@ -23,4 +23,5 @@ public class StoreDTO {
         this.longitude = longitude;
         this.sector = sector;
     }
+
 }
