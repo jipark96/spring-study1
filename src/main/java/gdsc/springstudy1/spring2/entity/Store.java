@@ -1,5 +1,6 @@
 package gdsc.springstudy1.spring2.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import gdsc.springstudy1.spring2.DTO.StoreDTO;
 import gdsc.springstudy1.spring2.DTO.UpdateStoreNameDTO;
 import lombok.Builder;
@@ -8,13 +9,15 @@ import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @Entity // DB에서는 행
 @Getter
 @ToString
 @RequiredArgsConstructor
-@Table(name = "Location") // 얘네의 속성으로 테이블을 만들게
+@Table // 얘네의 속성으로 테이블을 만들게
 public class Store {
 
     @Id
@@ -36,6 +39,11 @@ public class Store {
 
     @Column(name = "store_sector")
     private String sector;
+
+    @JsonIgnore
+    @ToString.Exclude
+    @OneToMany(mappedBy = "store")
+    private List<Comment> comments = new ArrayList<>();
 
     @Builder
     public Store(StoreDTO storeDTO) {

@@ -17,7 +17,7 @@ import java.util.Map;
 public class StoreApiController {
     private final StoreService storeService;
 
-    @PostMapping("/sabe")
+    @PostMapping("/save")
     public Long cardApiParsing() throws ParseException {
         return storeService.saveStore();
     }
